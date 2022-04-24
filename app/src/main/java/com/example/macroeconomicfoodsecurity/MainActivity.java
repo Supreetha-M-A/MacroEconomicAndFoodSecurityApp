@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        List<Result> courseModalArrayList = readerController.getGDPAgri("china");
+        List<Result> courseModalArrayList = readerController.getFertlizerConsump("usa");
 
         Log.e("cvcvcv", String.valueOf( courseModalArrayList.size()));
         for (Result m: courseModalArrayList
