@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -19,6 +20,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.macroeconomicfoodsecurity.DashboardGraphActivity;
 import com.example.macroeconomicfoodsecurity.MainActivity;
 import com.example.macroeconomicfoodsecurity.DBHandler;
 
@@ -30,49 +32,74 @@ import com.example.macroeconomicfoodsecurity.databinding.FragmentHomeBinding;
 import com.example.macroeconomicfoodsecurity.ui.notifications.NotificationsFragment;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class HomeFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
     private FragmentHomeBinding binding;
 
-    private List<Result> res;
-    private ReaderController readerController;
-    private DBHandler dbHandler;
+    private Button show;
+
+    ReaderController readerController;
+    DBHandler dbHandler;
+    private ArrayList<String> yearGDP;
+    private ArrayList<String> percentGDP;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        HomeViewModel homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
+        View v=inflater.inflate(R.layout.fragment_home,container,false);
+        show=v.findViewById(R.id.economyShowButton);
+        dbHandler=new DBHandler(getActivity().getApplicationContext());
+        Log.i("dbHandler-->", String.valueOf(dbHandler));
+        readerController = new ReaderController(dbHandler);
+        //dbHandler.addNewGDPPercent("1995", "34", "35", "33");
+        try {
+            WriterController.seedData(getActivity().getApplicationContext(), dbHandler);
+        } catch (IOException e) {
+            // e.printStackTrace();
+            Log.i("printstacktrace","errorrr");
+        }
+        List<Result> courseModalArrayList = readerController.getFDIInFlowsPercent("india","2005","2022");
+        Log.i("size--->", String.valueOf(courseModalArrayList.size()));
+        yearGDP=new ArrayList<String>();
+        percentGDP=new ArrayList<String>();
+        for (Result m: courseModalArrayList
+        ) {
+            Log.e("Main Economy ", m.percent);
+            yearGDP.add(m.year);
+            if(m.percent.length()>0) {
+                percentGDP.add(m.percent);
+            }
+            else{
+                percentGDP.add("5");
+            }
 
-        binding = FragmentHomeBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
-//        dbHandler=new DBHandler(getActivity().getApplicationContext());
-//        Log.i("dbHandler-->", String.valueOf(dbHandler));
-//        readerController = new ReaderController(dbHandler);
-//          dbHandler.addNewGDPPercent("1995", "34", "35", "33");
-//        try {
-//            WriterController.seedData(getActivity().getApplicationContext(), dbHandler);
-//        } catch (IOException e) {
-//           // e.printStackTrace();
-//            Log.i("printstacktrace","errorrr");
-//        }
-//        List<Result> courseModalArrayList = readerController.getGDPPercent("india");
+        }
+//        for(int i=0;i<9;i++){
+//            yearGDP.add(Integer.valueOf(courseModalArrayList.get(i).year));
+//            percentGDP.add(Integer.valueOf(courseModalArrayList.get(i).percent));
 //
-//        for (Result m: courseModalArrayList
-//        ) {
-//            Log.e("Main Home ", m.percent);
 //        }
-      // res= rc.getGDPPercent("China");
-//       for(int i=0;i<res.size();i++){
-//           Log.i("RESULTS", String.valueOf(res.get(i)));
-//       }
+        show.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(getActivity(), DashboardGraphActivity.class);
+//              i.putIntegerArrayListExtra("year",yearGDP);
+//                i.putIntegerArrayListExtra("percent",percentGDP);
+                i.putStringArrayListExtra("year", yearGDP);
+                i.putStringArrayListExtra("percent", percentGDP);
+//               Fragment fragment=new Fragment();
+//               Bundle bundle=new Bundle();
+//               bundle.putStringArrayList("year",yearGDP);
+//               bundle.putStringArrayList("percent",percentGDP);
 
+                startActivity(i);
 
-//        final TextView textView = binding.textHome;
-//        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-        return root;
+            }
+        });
+        return v;
     }
 
     @Override

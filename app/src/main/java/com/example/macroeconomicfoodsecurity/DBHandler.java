@@ -110,8 +110,8 @@ public class DBHandler extends SQLiteOpenHelper {
 //        // method to execute above sql query
 //        db.execSQL(query);
         sqLiteDatabase = db;
-        Log.e("CreatNewTable", "Creating table" + TABLE_NAME_FDIInFlowsPERCENT);
-         String query = "CREATE TABLE " + TABLE_NAME_FDIInFlowsPERCENT + " ("
+        Log.e("CreatNewTable", "Creating table" + TABLE_NAME_GDP_Agri);
+         String query = "CREATE TABLE " +TABLE_NAME_GDP_Agri + " ("
                 + YEAR + " TEXT, "
                 + India_COUNTRY + " TEXT,"
                 + CHINA_COUNTRY + " TEXT,"
@@ -128,6 +128,7 @@ public class DBHandler extends SQLiteOpenHelper {
         // on below line we are creating a
         // database for reading our database.
         SQLiteDatabase db = this.getReadableDatabase();
+        Log.i("read from db","red");
 
         // on below line we are creating a cursor with query to read data from database.
         Cursor cursorCourses = db.rawQuery("SELECT * FROM " + TABLE_NAME_GDBPERCENT
