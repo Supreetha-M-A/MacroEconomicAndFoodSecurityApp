@@ -6,7 +6,8 @@ import java.io.*;
 
 public class WriterController {
 
-    public static void seedData(Context context, DBHandler dbHandler) throws IOException {
+    private static void  seedGDPpercent(Context context, DBHandler dbHandler)
+    {
         BufferedReader reader = null;
         try {
             reader = new BufferedReader(
@@ -21,7 +22,7 @@ public class WriterController {
                 String[] strArray = { "","","",""};
                 int index  = 0;
                 for (String s : str
-                     ) {
+                ) {
                     strArray[index++] = s;
 
                 }
@@ -42,5 +43,48 @@ public class WriterController {
             }
         }
 
+    }
+
+    private static void  seedFDIInFlowspercent(Context context, DBHandler dbHandler)
+    {
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(
+                    new InputStreamReader(context.getAssets().
+                            open("macroeconomics/fdi_inflows_percent.csv"), "UTF-8"));
+
+            String line ="";
+            reader.readLine();
+            while ((line = reader.readLine()) != null) {
+
+                String[] str = line.split(",");
+                String[] strArray = { "","","",""};
+                int index  = 0;
+                for (String s : str
+                ) {
+                    strArray[index++] = s;
+
+                }
+
+                dbHandler.addNewFDIInFlows(strArray );
+
+
+            }
+        } catch (IOException e) {
+            //log the exception
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    //log the exception
+                }
+            }
+        }
+
+    }
+    public static void seedData(Context context, DBHandler dbHandler) throws IOException {
+        seedGDPpercent(context, dbHandler);
+        seedFDIInFlowspercent(context, dbHandler);
     }
 }
