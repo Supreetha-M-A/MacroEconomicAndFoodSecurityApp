@@ -20,7 +20,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
-    private DBHandler dbHandler;
+    private  DBHandler dbHandler;
     private ReaderController readerController;
     private  WriterController writerController;
 
@@ -32,15 +32,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         // creating a new dbhandler class
         // and passing our context to it.
-        dbHandler = new DBHandler(this);
+        dbHandler = new DBHandler(this.getApplicationContext());
+        dbHandler.createTable();
         readerController = new ReaderController(dbHandler);
-      //  dbHandler.addNewGDPPercent("1995", "34", "35", "33");
+// dbHandler.addNewGDPPercent("1995", "34", "35", "33");
         try {
             WriterController.seedData(this.getApplicationContext(), dbHandler);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        List<Result> courseModalArrayList = readerController.getGDPPercent("india");
+        List<Result> courseModalArrayList = readerController.getFDIInFlowsPercent("usa");
 
         for (Result m: courseModalArrayList
              ) {
