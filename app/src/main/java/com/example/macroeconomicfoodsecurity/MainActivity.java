@@ -41,11 +41,12 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        List<Result> courseModalArrayList = readerController.getFDIInFlowsPercent("usa");
+        List<Result> courseModalArrayList = readerController.getGDPAgri("china");
 
+        Log.e("cvcvcv", String.valueOf( courseModalArrayList.size()));
         for (Result m: courseModalArrayList
              ) {
-            Log.e("Main", m.percent);
+            Log.e("cvcvcv", m.percent);
         }
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
