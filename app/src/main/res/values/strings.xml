@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">MacroEconomicFoodSecurity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_economy">Economy</string>
+    <string name="title_agriculture">Agriculture</string>
+    <string name="title_trade">Trade</string>
     <string-array name="countries_array">
         <item>USA</item>
         <item>China</item>

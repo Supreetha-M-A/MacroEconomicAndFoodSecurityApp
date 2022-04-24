@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private DBHandler dbHandler;
     private ReaderController readerController;
     private  WriterController writerController;
+    public static Boolean isResearcher = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
