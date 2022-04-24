@@ -24,6 +24,7 @@ import com.example.macroeconomicfoodsecurity.ReaderController;
 import com.example.macroeconomicfoodsecurity.Result;
 import com.example.macroeconomicfoodsecurity.WriterController;
 import com.example.macroeconomicfoodsecurity.databinding.FragmentDashboardBinding;
+import com.example.macroeconomicfoodsecurity.ui.notifications.NotificationsFragment;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -94,6 +95,10 @@ percentGDP=new ArrayList<String>();
 //                i.putIntegerArrayListExtra("percent",percentGDP);
                i.putStringArrayListExtra("year", yearGDP);
                i.putStringArrayListExtra("percent", percentGDP);
+//               Fragment fragment=new Fragment();
+//               Bundle bundle=new Bundle();
+//               bundle.putStringArrayList("year",yearGDP);
+//               bundle.putStringArrayList("percent",percentGDP);
 
                 startActivity(i);
 
