@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Checkout/MacroEconomicAndFoodSecurityApp/app/src/main/res/layout/activity_dashboard_graph.xml" value="0.1" />
+        <entry key="..\:/Users/Checkout/MacroEconomicAndFoodSecurityApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/Checkout/MacroEconomicAndFoodSecurityApp/app/src/main/res/layout/fragment_dashboard.xml" value="0.1" />
+        <entry key="..\:/Users/Checkout/MacroEconomicAndFoodSecurityApp/app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3333333333333333" />
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.22950819672131148" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.41361256544502617" />
