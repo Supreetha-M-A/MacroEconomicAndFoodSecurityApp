@@ -41,12 +41,12 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        List<Result> courseModalArrayList = readerController.getFertlizerConsump("usa");
+        List<Result> courseModalArrayList = readerController.getGDPPercent("china", "1960", "1961");
 
         Log.e("cvcvcv", String.valueOf( courseModalArrayList.size()));
         for (Result m: courseModalArrayList
              ) {
-            Log.e("cvcvcv", m.percent);
+            Log.e("cvcvcv", m.year + "  " + m.percent);
         }
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
