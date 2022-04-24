@@ -1,17 +1,23 @@
 package com.example.macroeconomicfoodsecurity.ui.Welcome;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.macroeconomicfoodsecurity.R;
 import com.example.macroeconomicfoodsecurity.databinding.FragmentNotificationsBinding;
@@ -86,6 +92,23 @@ public class WelcomeFragment extends Fragment implements AdapterView.OnItemSelec
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
+        RadioButton radioButton1=(RadioButton) getView().findViewById(R.id.govtOfficial);
+        RadioGroup radioGroup=(RadioGroup) getView().findViewById(R.id.accountRadioGroup);
+
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                Log.i("chcekd-->", String.valueOf(radioGroup.getCheckedRadioButtonId()));
+                String checkedId=String.valueOf(radioGroup.getCheckedRadioButtonId());
+                final String val=((RadioButton) getView().findViewById(radioGroup.getCheckedRadioButtonId())).getText().toString();
+                Log.i("value rg",val);
+                SharedPreferences sp= getActivity().getSharedPreferences("type", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor=sp.edit();
+                editor.putString("usertype",val);
+                editor.commit();
+
+            }
+        });
     }
 
     @Override

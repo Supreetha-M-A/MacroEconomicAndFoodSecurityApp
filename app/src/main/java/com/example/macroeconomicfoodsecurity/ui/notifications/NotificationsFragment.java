@@ -2,7 +2,9 @@ package com.example.macroeconomicfoodsecurity.ui.notifications;
 
 import static com.example.macroeconomicfoodsecurity.MainActivity.isResearcher;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -41,6 +44,7 @@ public class NotificationsFragment extends Fragment implements AdapterView.OnIte
     DBHandler dbHandler;
     private ArrayList<String> yearGDP;
     private ArrayList<String> percentGDP;
+    String type;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -56,6 +60,9 @@ public class NotificationsFragment extends Fragment implements AdapterView.OnIte
 //        return root;
         //return root;
         View v=inflater.inflate(R.layout.fragment_notifications,container,false);
+        SharedPreferences sp= getContext().getSharedPreferences("type", Context.MODE_PRIVATE);
+         type=sp.getString("usertype","");
+        Log.i("type from sp",type);
         show=v.findViewById(R.id.tradeShowButton);
         dbHandler=new DBHandler(getActivity().getApplicationContext());
         Log.i("dbHandler-->", String.valueOf(dbHandler));
@@ -91,17 +98,21 @@ public class NotificationsFragment extends Fragment implements AdapterView.OnIte
         show.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(getActivity(), DashboardGraphActivity.class);
-//              i.putIntegerArrayListExtra("year",yearGDP);
-//                i.putIntegerArrayListExtra("percent",percentGDP);
-                i.putStringArrayListExtra("year", yearGDP);
-                i.putStringArrayListExtra("percent", percentGDP);
-//               Fragment fragment=new Fragment();
-//               Bundle bundle=new Bundle();
-//               bundle.putStringArrayList("year",yearGDP);
-//               bundle.putStringArrayList("percent",percentGDP);
-
-                startActivity(i);
+                SharedPreferences sp= getContext().getSharedPreferences("type",Context.MODE_PRIVATE);
+                Log.i("sp-->", String.valueOf(sp));
+                 type=sp.getString("usertype","");
+                Log.i("type from sp",type);
+//                Intent i=new Intent(getActivity(), DashboardGraphActivity.class);
+////              i.putIntegerArrayListExtra("year",yearGDP);
+////                i.putIntegerArrayListExtra("percent",percentGDP);
+//                i.putStringArrayListExtra("year", yearGDP);
+//                i.putStringArrayListExtra("percent", percentGDP);
+////               Fragment fragment=new Fragment();
+////               Bundle bundle=new Bundle();
+////               bundle.putStringArrayList("year",yearGDP);
+////               bundle.putStringArrayList("percent",percentGDP);
+//
+//                startActivity(i);
 
             }
         });
@@ -116,6 +127,75 @@ public class NotificationsFragment extends Fragment implements AdapterView.OnIte
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
+        CheckBox cb1=(CheckBox) getView().findViewById(R.id.tradeCheckBox1);
+        CheckBox cb2=(CheckBox) getView().findViewById(R.id.tradeCheckBox2);
+        CheckBox cb3=(CheckBox) getView().findViewById(R.id.tradeCheckBox3);
+        CheckBox cb4=(CheckBox) getView().findViewById(R.id.tradeCheckBo4);
+        cb1.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                Log.i("usertype sp",type);
+                if(type.equals(" Government official")){
+                    cb2.setChecked(false);
+                    cb3.setChecked(false);
+                    cb4.setChecked(false);
+
+                }
+                else{
+//                    cb2.setChecked(false);
+//                    cb3.setChecked(false);
+//                    cb4.setChecked(false);
+
+                }
+            }
+        });
+        cb2.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                if(type.equals(" Government official")){
+                    Log.i("if","if");
+                    cb1.setChecked(false);
+                    cb3.setChecked(false);
+                    cb4.setChecked(false);
+
+                }
+                else{
+
+                }
+            }
+        });
+        cb3.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                if(type.equals(" Government official")){
+                    cb2.setChecked(false);
+                    cb1.setChecked(false);
+                    cb4.setChecked(false);
+
+                }
+                else{
+
+                }
+            }
+        });
+        cb4.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                if(type.equals(" Government official")){
+                    cb2.setChecked(false);
+                    cb3.setChecked(false);
+                    cb1.setChecked(false);
+
+                }
+                else{
+
+                }
+            }
+        });
 //        Boolean isResearcher = getArguments().getBoolean("isResearcher");
 //        if(!isResearcher) {
 //            Button annotateButton = getView().findViewById(R.id.annotateButton);
