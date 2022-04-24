@@ -7,7 +7,7 @@
     tools:context=".ui.dashboard.DashboardFragment">
 
     <TextView
-        android:id="@+id/text_dashboard"
+        android:id="@+id/text_agriculture"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -21,10 +21,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/agricultureTextView"
         android:layout_width="215dp"
         android:layout_height="35dp"
-        android:text="Macroeconomic (USD)"
+        android:text="@string/title_agriculture"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,10 +34,10 @@
         app:layout_constraintVertical_bias="0.188" />
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/agricultureCheckBox1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" GDP (USD)"
+        android:text="Contribution to GDP "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.431"
@@ -46,42 +46,43 @@
         app:layout_constraintVertical_bias="0.285" />
 
     <CheckBox
-        android:id="@+id/checkBox2"
+        android:id="@+id/agricultureCheckBox2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" FDI Inflows (USD)"
+        android:text="Credit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.29"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.367" />
+        app:layout_constraintVertical_bias="0.38" />
 
     <CheckBox
-        android:id="@+id/checkBox3"
+        android:id="@+id/agricultureCheckBox3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" FDI Outflows (USD)"
+        android:text="Fertilizers"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintHorizontal_bias="0.312"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.45" />
+        app:layout_constraintVertical_bias="0.467" />
 
     <CheckBox
-        android:id="@+id/checkBox4"
+        android:id="@+id/agricultureCheckBo4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" Import/Export Flow"
+        android:text="Fertilizer Production"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.511"
+        app:layout_constraintHorizontal_bias="0.43"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.531" />
+        app:layout_constraintVertical_bias="0.55" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/agricultureShowButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Show"
@@ -93,7 +94,7 @@
         app:layout_constraintVertical_bias="0.784" />
 
     <Spinner
-        android:id="@+id/spinner2"
+        android:id="@+id/spinner3"
         android:layout_width="103dp"
         android:layout_height="41dp"
         android:layout_marginEnd="4dp"
@@ -104,7 +105,7 @@
 
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/agricultureTitleTextView"
         android:layout_width="207dp"
         android:layout_height="61dp"
         android:text="Macroeconomic Researcher Food Years Security Time Series Dashboard"
@@ -117,7 +118,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/agricultureImageView"
         android:layout_width="28dp"
         android:layout_height="45dp"
         android:background="#FF9800"

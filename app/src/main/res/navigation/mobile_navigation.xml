@@ -3,7 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_welcome">
+
+    <fragment
+        android:id="@+id/navigation_welcome"
+        android:name="com.example.macroeconomicfoodsecurity.ui.Welcome.WelcomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_welcome" />
 
     <fragment
         android:id="@+id/navigation_home"

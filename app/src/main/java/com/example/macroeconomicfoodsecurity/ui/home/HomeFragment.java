@@ -36,8 +36,6 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
 
     private FragmentHomeBinding binding;
 
-    private RadioGroup radioGroup;
-
     private List<Result> res;
     private ReaderController readerController;
     private DBHandler dbHandler;
@@ -79,7 +77,7 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        Spinner spinner = (Spinner) getView().findViewById(R.id.spinner);
+        Spinner spinner = (Spinner) getView().findViewById(R.id.spinner2);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this.getContext(),
                 R.array.countries_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -89,17 +87,17 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
 //        NotificationsFragment notificationsFragment = new NotificationsFragment();
 //        Bundle args = new Bundle();
 //        args.putBoolean("isResearcher", true);
-        radioGroup = (RadioGroup) getView().findViewById(R.id.accountRadioGroup);
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if(checkedId == R.id.govtOfficial){
-                    isResearcher = false;
-                } else {
-                    isResearcher = true;
-                }
-            }
-        });
+//        radioGroup = (RadioGroup) getView().findViewById(R.id.accountRadioGroup);
+//        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(RadioGroup group, int checkedId) {
+//                if(checkedId == R.id.govtOfficial){
+//                    isResearcher = false;
+//                } else {
+//                    isResearcher = true;
+//                }
+//            }
+//        });
 //        notificationsFragment.setArguments(args);
 //        getFragmentManager().beginTransaction().add(R.id.container, notificationsFragment).commit();
     }

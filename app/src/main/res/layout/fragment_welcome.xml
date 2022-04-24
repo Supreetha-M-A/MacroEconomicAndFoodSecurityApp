@@ -1,14 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.WelcomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".ui.Welcome.WelcomeFragment">
 
-</FrameLayout>
+
+<TextView
+    android:id="@+id/textView"
+    android:layout_width="256dp"
+    android:layout_height="95dp"
+    android:layout_marginEnd="52dp"
+    android:background="#CCBAED"
+    android:contentDescription="welcome text"
+    android:text="Welcome to Macroeconomic Food Security app"
+    android:textAlignment="center"
+    android:textSize="20sp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.322" />
+
+<Spinner
+    android:id="@+id/spinner1"
+    android:layout_width="103dp"
+    android:layout_height="41dp"
+    android:layout_marginEnd="4dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.0" />
+
+<TextView
+    android:id="@+id/textView3"
+    android:layout_width="207dp"
+    android:layout_height="61dp"
+    android:text="Macroeconomic Researcher Food Years Security Time Series Dashboard"
+    android:textSize="16sp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.348"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.0" />
+
+<ImageView
+    android:id="@+id/imageView"
+    android:layout_width="28dp"
+    android:layout_height="45dp"
+    android:background="#FF9800"
+    android:src="?attr/actionModePasteDrawable"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.065"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.0" />
+
+<ImageView
+    android:id="@+id/imageView3"
+    android:layout_width="124dp"
+    android:layout_height="122dp"
+    android:src="@drawable/ic_account_24dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.149"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.642" />
+
+<ImageView
+    android:id="@+id/imageView4"
+    android:layout_width="129dp"
+    android:layout_height="126dp"
+    android:src="@drawable/ic_account_tie_24dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.886"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.639" />
+
+<RadioGroup
+    android:id="@+id/accountRadioGroup"
+    android:layout_width="336dp"
+    android:layout_height="42dp"
+    android:onClick="toggleAccount"
+    android:orientation="horizontal"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.786"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.776">
+
+    <RadioButton
+        android:id="@+id/researcher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="Researcher" />
+
+    <RadioButton
+        android:id="@+id/govtOfficial"
+        android:layout_width="162dp"
+        android:layout_height="37dp"
+        android:layout_marginLeft="70dp"
+        android:text=" Government official" />
+
+</RadioGroup>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
