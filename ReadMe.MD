@@ -10,3 +10,6 @@
 - Screen Layouts
   - HD video is [here](OUTPUT/Video/screenlayouts.mp4)
   - ![GIF](OUTPUT/GIF//screenlayouts_AdobeCreativeCloudExpress.gif)
+
+- Graph
+    ![image](OUTPUT/images/chart.jpg)
