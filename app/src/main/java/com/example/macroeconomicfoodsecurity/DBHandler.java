@@ -37,7 +37,7 @@ public class DBHandler extends SQLiteOpenHelper {
     public DBHandler(Context context) {
 
         super(context, "macroeconmics", null, 1);
-        Log.e("mm", "create database");
+
     }
 
     // below method is for creating a database by running a sqlite query
@@ -88,7 +88,7 @@ public class DBHandler extends SQLiteOpenHelper {
         return courseModalArrayList;
     }
     // this method is use to add new course to our sqlite database.
-    public void addNewGDPPercent(String year, String india, String china, String usa) {
+    public void addNewGDPPercent(String[] inValues) {
 
         // on below line we are creating a variable for
         // our sqlite database and calling writable method
@@ -101,10 +101,10 @@ public class DBHandler extends SQLiteOpenHelper {
 
         // on below line we are passing all values
         // along with its key and value pair.
-        values.put(YEAR, year);
-        values.put(India_COUNTRY, india);
-        values.put(CHINA_COUNTRY, china);
-        values.put(USA_COUNTRY, usa);
+        values.put(YEAR, inValues[0]);
+        values.put(India_COUNTRY, inValues[1]);
+        values.put(CHINA_COUNTRY, inValues[2]);
+        values.put(USA_COUNTRY, inValues[3]);
 
         // after adding all values we are passing
         // content values to our table.
