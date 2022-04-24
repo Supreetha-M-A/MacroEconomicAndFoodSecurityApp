@@ -41,7 +41,7 @@ public class NotificationsFragment extends Fragment implements AdapterView.OnIte
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        Spinner spinner = (Spinner) getView().findViewById(R.id.spinner3);
+        Spinner spinner = (Spinner) getView().findViewById(R.id.spinner4);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this.getContext(),
                 R.array.countries_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

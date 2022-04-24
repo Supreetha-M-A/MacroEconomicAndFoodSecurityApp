@@ -39,10 +39,12 @@ public class DashboardGraphActivity extends AppCompatActivity implements OnChart
         lineChart.setOnChartValueSelectedListener(DashboardGraphActivity.this);
         lineChart.setScaleEnabled(false);
         lineChart.setDrawGridBackground(false);
+        lineChart.getXAxis().setGranularity(2f);
 
         ArrayList<Entry> yVal = new ArrayList<>();
         for (int k = 0; k < year.size(); k++) {
             yVal.add(new Entry(Float.parseFloat(year.get(k)),Float.parseFloat(percent.get(k))));
+       Log.i("yval-->", String.valueOf(yVal.get(k)));
         }
 
 

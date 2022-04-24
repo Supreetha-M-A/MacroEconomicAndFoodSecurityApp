@@ -1,6 +1,7 @@
 package com.example.macroeconomicfoodsecurity;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,82 +17,80 @@ public  class ReaderController {
     {
         this.dbHandler = inDbHandler;
     }
-    public  List<Result>   getGDPPercent(String country) {
+    private List<Result> getResults(String country, String se, String ey, List<Model> gdpPercent){
+        List<Result> results = null;
+        try {
+
+            int startYear = Integer.parseInt(se);
+            int endYear = Integer.parseInt(ey);
+            Log.e("reader controller", se + " " + ey);
+            gdpPercent=  gdpPercent.stream().filter(g -> Integer.parseInt(g.year) >= startYear && Integer.parseInt(g.year) <= endYear).collect(Collectors.toList());
+            Log.e("reader controller", String.valueOf(gdpPercent.size()));
+            if(country == null || country.equalsIgnoreCase("china")){
+                results= gdpPercent.stream().map(m -> new Result(m.year, m.china)).collect(Collectors.toList());
+            }
+            else if(country.equalsIgnoreCase("usa")){
+                results= gdpPercent.stream().map(m -> new Result(m.year, m.usa)).collect(Collectors.toList());
+            }
+            else{
+                results = gdpPercent.stream().map(m -> new Result(m.year, m.india)).collect(Collectors.toList());
+            }
+
+
+        } catch (Exception e) {
+            Log.e("reader controller err", e.getMessage());
+            //log the exception
+        }
+        return results;
+    }
+    public  List<Result>   getGDPPercent(String country, String se, String ey) {
         List<Result> results = null;
         try {
             List<Model> gdpPercent =  this.dbHandler.readGDPPercentages();
-            if(country == null || country.equalsIgnoreCase("china")){
-                results= gdpPercent.stream().map(m -> new Result(m.year, m.china)).collect(Collectors.toList());
-            }
-            else if(country.equalsIgnoreCase("usa")){
-                results= gdpPercent.stream().map(m -> new Result(m.year, m.usa)).collect(Collectors.toList());
-            }
-            else{
-                results =  results= gdpPercent.stream().map(m -> new Result(m.year, m.india)).collect(Collectors.toList());
-            }
+            results = getResults(country, se, ey, gdpPercent);
 
 
         } catch (Exception e) {
+            Log.e("reader controller err", e.getMessage());
             //log the exception
         }
         return   results;
     }
-    public  List<Result>   getFDIInFlowsPercent(String country) {
+    public  List<Result>   getFDIInFlowsPercent(String country, String se, String ey) {
         List<Result> results = null;
         try {
             List<Model> gdpPercent =  this.dbHandler.readFDIInFlowsPercentValues();
-            if(country == null || country.equalsIgnoreCase("china")){
-                results= gdpPercent.stream().map(m -> new Result(m.year, m.china)).collect(Collectors.toList());
-            }
-            else if(country.equalsIgnoreCase("usa")){
-                results= gdpPercent.stream().map(m -> new Result(m.year, m.usa)).collect(Collectors.toList());
-            }
-            else{
-                results = gdpPercent.stream().map(m -> new Result(m.year, m.india)).collect(Collectors.toList());
-            }
+            results = getResults(country, se, ey, gdpPercent);
 
 
         } catch (Exception e) {
+            Log.e("reader controller err", e.getMessage());
             //log the exception
         }
         return   results;
     }
-    public  List<Result>   getFDIOutFlowsPercent(String country) {
+    public  List<Result>   getFDIOutFlowsPercent(String country, String se, String ey) {
         List<Result> results = null;
         try {
             List<Model> gdpPercent =  this.dbHandler.readFDIOutFlowsPercentValues();
-            if(country == null || country.equalsIgnoreCase("china")){
-                results= gdpPercent.stream().map(m -> new Result(m.year, m.china)).collect(Collectors.toList());
-            }
-            else if(country.equalsIgnoreCase("usa")){
-                results= gdpPercent.stream().map(m -> new Result(m.year, m.usa)).collect(Collectors.toList());
-            }
-            else{
-                results = gdpPercent.stream().map(m -> new Result(m.year, m.india)).collect(Collectors.toList());
-            }
+            results = getResults(country, se, ey, gdpPercent);
 
 
         } catch (Exception e) {
+            Log.e("reader controller err", e.getMessage());
             //log the exception
         }
         return   results;
     }
-    public  List<Result>   getFertlizerConsump(String country) {
+    public  List<Result>   getFertlizerConsump(String country, String se, String ey) {
         List<Result> results = null;
         try {
             List<Model> gdpPercent =  this.dbHandler.readFertiliserConsump();
-            if(country == null || country.equalsIgnoreCase("china")){
-                results= gdpPercent.stream().map(m -> new Result(m.year, m.china)).collect(Collectors.toList());
-            }
-            else if(country.equalsIgnoreCase("usa")){
-                results= gdpPercent.stream().map(m -> new Result(m.year, m.usa)).collect(Collectors.toList());
-            }
-            else{
-                results = gdpPercent.stream().map(m -> new Result(m.year, m.india)).collect(Collectors.toList());
-            }
+            results = getResults(country, se, ey, gdpPercent);
 
 
         } catch (Exception e) {
+            Log.e("reader controller err", e.getMessage());
             //log the exception
         }
         return   results;

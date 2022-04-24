@@ -67,7 +67,7 @@ DashboardFragment extends Fragment implements AdapterView.OnItemSelectedListener
             // e.printStackTrace();
             Log.i("printstacktrace","errorrr");
         }
-        List<Result> courseModalArrayList = readerController.getGDPPercent("india");
+        List<Result> courseModalArrayList = readerController.getGDPPercent("china","2010","2022");
 yearGDP=new ArrayList<String>();
 percentGDP=new ArrayList<String>();
         for (Result m: courseModalArrayList
@@ -78,7 +78,7 @@ percentGDP=new ArrayList<String>();
                percentGDP.add(m.percent);
            }
            else{
-               percentGDP.add("0");
+               percentGDP.add("5");
            }
 
         }
