@@ -1,6 +1,8 @@
 package com.example.macroeconomicfoodsecurity.ui.dashboard;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -40,6 +43,7 @@ DashboardFragment extends Fragment implements AdapterView.OnItemSelectedListener
     DBHandler dbHandler;
     private ArrayList<String> yearGDP;
     private ArrayList<String> percentGDP;
+    String type;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -57,6 +61,8 @@ DashboardFragment extends Fragment implements AdapterView.OnItemSelectedListener
 //        return root;
         View v=inflater.inflate(R.layout.fragment_dashboard,container,false);
         show=v.findViewById(R.id.agricultureShowButton);
+        SharedPreferences sp= getContext().getSharedPreferences("type", Context.MODE_PRIVATE);
+        type=sp.getString("usertype","");
         dbHandler=new DBHandler(getActivity().getApplicationContext());
         Log.i("dbHandler-->", String.valueOf(dbHandler));
         readerController = new ReaderController(dbHandler);
@@ -115,6 +121,75 @@ percentGDP=new ArrayList<String>();
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
+        CheckBox cb1=(CheckBox) getView().findViewById(R.id.agricultureCheckBox1);
+        CheckBox cb2=(CheckBox) getView().findViewById(R.id.agricultureCheckBox2);
+        CheckBox cb3=(CheckBox) getView().findViewById(R.id.agricultureCheckBox3);
+        CheckBox cb4=(CheckBox) getView().findViewById(R.id.agricultureCheckBo4);
+        cb1.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                Log.i("usertype sp",type);
+                if(type.equals(" Government official")){
+                    cb2.setChecked(false);
+                    cb3.setChecked(false);
+                    cb4.setChecked(false);
+
+                }
+                else{
+//                    cb2.setChecked(false);
+//                    cb3.setChecked(false);
+//                    cb4.setChecked(false);
+
+                }
+            }
+        });
+        cb2.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                if(type.equals(" Government official")){
+                    Log.i("if","if");
+                    cb1.setChecked(false);
+                    cb3.setChecked(false);
+                    cb4.setChecked(false);
+
+                }
+                else{
+
+                }
+            }
+        });
+        cb3.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                if(type.equals(" Government official")){
+                    cb2.setChecked(false);
+                    cb1.setChecked(false);
+                    cb4.setChecked(false);
+
+                }
+                else{
+
+                }
+            }
+        });
+        cb4.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                if(type.equals(" Government official")){
+                    cb2.setChecked(false);
+                    cb3.setChecked(false);
+                    cb1.setChecked(false);
+
+                }
+                else{
+
+                }
+            }
+        });
     }
 
     @Override

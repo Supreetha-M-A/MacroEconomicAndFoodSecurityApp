@@ -2,7 +2,9 @@ package com.example.macroeconomicfoodsecurity.ui.home;
 
 import static com.example.macroeconomicfoodsecurity.MainActivity.isResearcher;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -45,6 +48,7 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
     DBHandler dbHandler;
     private ArrayList<String> yearGDP;
     private ArrayList<String> percentGDP;
+    String type;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -55,6 +59,8 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
         Log.i("dbHandler-->", String.valueOf(dbHandler));
         readerController = new ReaderController(dbHandler);
         //dbHandler.addNewGDPPercent("1995", "34", "35", "33");
+        SharedPreferences sp= getContext().getSharedPreferences("type", Context.MODE_PRIVATE);
+        type=sp.getString("usertype","");
         try {
             WriterController.seedData(getActivity().getApplicationContext(), dbHandler);
         } catch (IOException e) {
@@ -110,6 +116,75 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
+        CheckBox cb1=(CheckBox) getView().findViewById(R.id.economyCheckBox1);
+        CheckBox cb2=(CheckBox) getView().findViewById(R.id.economyCheckBox2);
+        CheckBox cb3=(CheckBox) getView().findViewById(R.id.economyCheckBox3);
+        CheckBox cb4=(CheckBox) getView().findViewById(R.id.economyCheckBox4);
+        cb1.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                Log.i("usertype sp",type);
+                if(type.equals(" Government official")){
+                    cb2.setChecked(false);
+                    cb3.setChecked(false);
+                    cb4.setChecked(false);
+
+                }
+                else{
+//                    cb2.setChecked(false);
+//                    cb3.setChecked(false);
+//                    cb4.setChecked(false);
+
+                }
+            }
+        });
+        cb2.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                if(type.equals(" Government official")){
+                    Log.i("if","if");
+                    cb1.setChecked(false);
+                    cb3.setChecked(false);
+                    cb4.setChecked(false);
+
+                }
+                else{
+
+                }
+            }
+        });
+        cb3.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                if(type.equals(" Government official")){
+                    cb2.setChecked(false);
+                    cb1.setChecked(false);
+                    cb4.setChecked(false);
+
+                }
+                else{
+
+                }
+            }
+        });
+        cb4.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                if(type.equals(" Government official")){
+                    cb2.setChecked(false);
+                    cb3.setChecked(false);
+                    cb1.setChecked(false);
+
+                }
+                else{
+
+                }
+            }
+        });
 
 //        NotificationsFragment notificationsFragment = new NotificationsFragment();
 //        Bundle args = new Bundle();

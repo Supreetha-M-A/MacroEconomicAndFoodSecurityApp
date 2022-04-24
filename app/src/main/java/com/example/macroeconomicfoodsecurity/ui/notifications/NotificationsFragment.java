@@ -102,17 +102,17 @@ public class NotificationsFragment extends Fragment implements AdapterView.OnIte
                 Log.i("sp-->", String.valueOf(sp));
                  type=sp.getString("usertype","");
                 Log.i("type from sp",type);
-//                Intent i=new Intent(getActivity(), DashboardGraphActivity.class);
-////              i.putIntegerArrayListExtra("year",yearGDP);
-////                i.putIntegerArrayListExtra("percent",percentGDP);
-//                i.putStringArrayListExtra("year", yearGDP);
-//                i.putStringArrayListExtra("percent", percentGDP);
-////               Fragment fragment=new Fragment();
-////               Bundle bundle=new Bundle();
-////               bundle.putStringArrayList("year",yearGDP);
-////               bundle.putStringArrayList("percent",percentGDP);
-//
-//                startActivity(i);
+                Intent i=new Intent(getActivity(), DashboardGraphActivity.class);
+//              i.putIntegerArrayListExtra("year",yearGDP);
+//                i.putIntegerArrayListExtra("percent",percentGDP);
+                i.putStringArrayListExtra("year", yearGDP);
+                i.putStringArrayListExtra("percent", percentGDP);
+//               Fragment fragment=new Fragment();
+//               Bundle bundle=new Bundle();
+//               bundle.putStringArrayList("year",yearGDP);
+//               bundle.putStringArrayList("percent",percentGDP);
+
+                startActivity(i);
 
             }
         });
