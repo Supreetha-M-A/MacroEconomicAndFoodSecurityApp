@@ -8,9 +8,12 @@ import android.util.Log;
 import android.view.MotionEvent;
 
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.listener.ChartTouchListener;
@@ -26,36 +29,31 @@ public class DashboardGraphActivity extends AppCompatActivity implements OnChart
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard_graph);
-        Intent i=getIntent();
-        ArrayList<String> year=i.getStringArrayListExtra("year");
-        ArrayList<String> percent=i.getStringArrayListExtra("percent");
-        for(int j=0;j<year.size();j++){
-            Log.i("yeararray", year.get(j));
-        }
-        lineChart=(LineChart) findViewById(R.id.linechart);
+        Intent i = getIntent();
+        ArrayList<String> year = i.getStringArrayListExtra("year");
+        //ArrayListExtra("year");
+        ArrayList<String> percent = i.getStringArrayListExtra("percent");
+
+        lineChart = (LineChart) findViewById(R.id.linechart);
         lineChart.setOnChartGestureListener(DashboardGraphActivity.this);
         lineChart.setOnChartValueSelectedListener(DashboardGraphActivity.this);
         lineChart.setScaleEnabled(false);
-        ArrayList<Entry> yVal=new ArrayList<>();
-//        int val=100;
-// for(int k=0;k<year.size();k++){
-//    // yVal.add(new Entry(2f*i,(float) Math.sin(val*(i+1))));
-//     yVal
-// }
-// yVal.add(new Entry(,35));
-// yVal.add(new Entry(2001,60));
-// yVal.add(new Entry(2002,44));
+        lineChart.setDrawGridBackground(false);
+
+        ArrayList<Entry> yVal = new ArrayList<>();
+        for (int k = 0; k < year.size(); k++) {
+            yVal.add(new Entry(Float.parseFloat(year.get(k)),Float.parseFloat(percent.get(k))));
+        }
 
 
-
-
-        LineDataSet set1=new LineDataSet(yVal,"Data Set 1");
+        LineDataSet set1 = new LineDataSet(yVal, "Data Set 1");
         set1.setFillAlpha(110);
-        ArrayList<ILineDataSet> dataset=new ArrayList<>();
+        ArrayList<ILineDataSet> dataset = new ArrayList<>();
         dataset.add(set1);
-        LineData data=new LineData(dataset);
+        LineData data = new LineData(dataset);
         lineChart.setData(data);
     }
+
 
     @Override
     public void onChartGestureStart(MotionEvent me, ChartTouchListener.ChartGesture lastPerformedGesture) {
@@ -106,4 +104,5 @@ public class DashboardGraphActivity extends AppCompatActivity implements OnChart
     public void onNothingSelected() {
 
     }
+
 }

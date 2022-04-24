@@ -34,6 +34,7 @@ DashboardFragment extends Fragment implements AdapterView.OnItemSelectedListener
 
     private FragmentDashboardBinding binding;
     private Button show;
+
     ReaderController readerController;
     DBHandler dbHandler;
     private ArrayList<String> yearGDP;
@@ -70,18 +71,30 @@ yearGDP=new ArrayList<String>();
 percentGDP=new ArrayList<String>();
         for (Result m: courseModalArrayList
         ) {
-            Log.e("Main Home ", m.year);
-            yearGDP.add(m.year);
-            percentGDP.add(m.percent);
+            Log.e("Main Home ", m.percent);
+           yearGDP.add(m.year);
+           if(m.percent.length()>0) {
+               percentGDP.add(m.percent);
+           }
+           else{
+               percentGDP.add("0");
+           }
 
         }
+//        for(int i=0;i<9;i++){
+//            yearGDP.add(Integer.valueOf(courseModalArrayList.get(i).year));
+//            percentGDP.add(Integer.valueOf(courseModalArrayList.get(i).percent));
+//
+//        }
         show.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 Intent i=new Intent(getActivity(), DashboardGraphActivity.class);
-                //i.putIntegerArrayListExtra("year",(ArrayList<Integ>) )i.put\\
-                i.putStringArrayListExtra("year", yearGDP);
-                i.putStringArrayListExtra("percent", percentGDP);
+//              i.putIntegerArrayListExtra("year",yearGDP);
+//                i.putIntegerArrayListExtra("percent",percentGDP);
+               i.putStringArrayListExtra("year", yearGDP);
+               i.putStringArrayListExtra("percent", percentGDP);
+
                 startActivity(i);
 
             }
