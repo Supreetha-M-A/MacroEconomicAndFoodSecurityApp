@@ -74,7 +74,7 @@ public class NotificationsFragment extends Fragment implements AdapterView.OnIte
             // e.printStackTrace();
             Log.i("printstacktrace","errorrr");
         }
-        List<Result> courseModalArrayList = readerController.getFDIInFlowsPercent("india","2005","2022");
+        List<Result> courseModalArrayList = readerController.getFDIInFlowsPercent("china","2010","2022");
         Log.i("size--->", String.valueOf(courseModalArrayList.size()));
         yearGDP=new ArrayList<String>();
         percentGDP=new ArrayList<String>();

@@ -48,6 +48,8 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
     DBHandler dbHandler;
     private ArrayList<String> yearGDP;
     private ArrayList<String> percentGDP;
+    private ArrayList<String> yearFDIOutput;
+    private ArrayList<String> percentFDIOutput;
     String type;
 
 
@@ -67,10 +69,14 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
             // e.printStackTrace();
             Log.i("printstacktrace","errorrr");
         }
-        List<Result> courseModalArrayList = readerController.getFDIInFlowsPercent("india","2005","2022");
+        List<Result> courseModalArrayList = readerController.getFDIInFlowsPercent("india","2008","2022");
+        List<Result> courseModalOutFlowArrayList = readerController.getFDIOutFlowsPercent("india","2010","2022");
+
         Log.i("size--->", String.valueOf(courseModalArrayList.size()));
         yearGDP=new ArrayList<String>();
         percentGDP=new ArrayList<String>();
+        yearFDIOutput=new ArrayList<String>();
+        percentFDIOutput=new ArrayList<String>();
         for (Result m: courseModalArrayList
         ) {
             Log.e("Main Economy ", m.percent);
@@ -83,11 +89,18 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
             }
 
         }
-//        for(int i=0;i<9;i++){
-//            yearGDP.add(Integer.valueOf(courseModalArrayList.get(i).year));
-//            percentGDP.add(Integer.valueOf(courseModalArrayList.get(i).percent));
-//
-//        }
+        for (Result m: courseModalOutFlowArrayList
+        ) {
+            Log.e("Main Economy ", m.percent);
+            yearFDIOutput.add(m.year);
+            if(m.percent.length()>0) {
+                percentFDIOutput.add(m.percent);
+            }
+            else{
+                percentFDIOutput.add("5");
+            }
+
+        }
         show.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {

@@ -44,6 +44,7 @@ DashboardFragment extends Fragment implements AdapterView.OnItemSelectedListener
     private ArrayList<String> yearGDP;
     private ArrayList<String> percentGDP;
     String type;
+    String selected;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -73,7 +74,7 @@ DashboardFragment extends Fragment implements AdapterView.OnItemSelectedListener
             // e.printStackTrace();
             Log.i("printstacktrace","errorrr");
         }
-        List<Result> courseModalArrayList = readerController.getFertlizerConsump("india","2005","2022");
+        List<Result> courseModalArrayList = readerController.getFDIInFlowsPercent("india","2008","2022");
 yearGDP=new ArrayList<String>();
 percentGDP=new ArrayList<String>();
         for (Result m: courseModalArrayList
@@ -119,8 +120,23 @@ percentGDP=new ArrayList<String>();
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this.getContext(),
                 R.array.countries_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
         spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
+        Log.i("spinnerr->", spinner.getSelectedItem().toString());
+       // spinner.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                 selected=adapterView.getSelectedItem().toString();
+                Log.i("selected-->",selected);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
         CheckBox cb1=(CheckBox) getView().findViewById(R.id.agricultureCheckBox1);
         CheckBox cb2=(CheckBox) getView().findViewById(R.id.agricultureCheckBox2);
         CheckBox cb3=(CheckBox) getView().findViewById(R.id.agricultureCheckBox3);
