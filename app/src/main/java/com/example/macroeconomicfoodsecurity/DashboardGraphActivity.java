@@ -2,7 +2,9 @@ package com.example.macroeconomicfoodsecurity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 
 import com.github.mikephil.charting.charts.LineChart;
@@ -24,14 +26,21 @@ public class DashboardGraphActivity extends AppCompatActivity implements OnChart
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard_graph);
+        Intent i=getIntent();
+        ArrayList<String> year=i.getStringArrayListExtra("year");
+        ArrayList<String> percent=i.getStringArrayListExtra("percent");
+        for(int j=0;j<year.size();j++){
+            Log.i("yeararray", year.get(j));
+        }
         lineChart=(LineChart) findViewById(R.id.linechart);
         lineChart.setOnChartGestureListener(DashboardGraphActivity.this);
         lineChart.setOnChartValueSelectedListener(DashboardGraphActivity.this);
         lineChart.setScaleEnabled(false);
         ArrayList<Entry> yVal=new ArrayList<>();
 //        int val=100;
-// for(int i=0;i<5;i++){
-//     yVal.add(new Entry(2f*i,(float) Math.sin(val*(i+1))));
+// for(int k=0;k<year.size();k++){
+//    // yVal.add(new Entry(2f*i,(float) Math.sin(val*(i+1))));
+//     yVal
 // }
 // yVal.add(new Entry(,35));
 // yVal.add(new Entry(2001,60));
