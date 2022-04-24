@@ -20,12 +20,17 @@ public  class ReaderController {
     private List<Result> getResults(String country, String se, String ey, List<Model> gdpPercent){
         List<Result> results = null;
         try {
-
+            Log.e("reader controller", String.valueOf(gdpPercent.size()));
             int startYear = Integer.parseInt(se);
             int endYear = Integer.parseInt(ey);
             Log.e("reader controller", se + " " + ey);
-            gdpPercent=  gdpPercent.stream().filter(g -> Integer.parseInt(g.year) >= startYear && Integer.parseInt(g.year) <= endYear).collect(Collectors.toList());
+            for (Model m : gdpPercent
+                 ) {
+                Log.e("reader controller", m.year + " : " + String.valueOf( m.year.isEmpty()));
+            }
+            gdpPercent=  gdpPercent.stream().filter(g -> !g.year.isEmpty() && Integer.parseInt(g.year) >= startYear && Integer.parseInt(g.year) <= endYear).collect(Collectors.toList());
             Log.e("reader controller", String.valueOf(gdpPercent.size()));
+
             if(country == null || country.equalsIgnoreCase("china")){
                 results= gdpPercent.stream().map(m -> new Result(m.year, m.china)).collect(Collectors.toList());
             }
@@ -95,22 +100,15 @@ public  class ReaderController {
         }
         return   results;
     }
-    public  List<Result>   getGDPAgri(String country) {
+    public  List<Result>   getGDPAgri(String country, String se, String ey) {
         List<Result> results = null;
         try {
             List<Model> gdpPercent =  this.dbHandler.readGDPAgriValues();
-            if(country == null || country.equalsIgnoreCase("china")){
-                results= gdpPercent.stream().map(m -> new Result(m.year, m.china)).collect(Collectors.toList());
-            }
-            else if(country.equalsIgnoreCase("usa")){
-                results= gdpPercent.stream().map(m -> new Result(m.year, m.usa)).collect(Collectors.toList());
-            }
-            else{
-                results = gdpPercent.stream().map(m -> new Result(m.year, m.india)).collect(Collectors.toList());
-            }
+            results = getResults(country, se, ey, gdpPercent);
 
 
         } catch (Exception e) {
+            Log.e("reader controller err", e.getMessage());
             //log the exception
         }
         return   results;
