@@ -4,6 +4,7 @@ import static com.example.macroeconomicfoodsecurity.MainActivity.isResearcher;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,14 +20,28 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.macroeconomicfoodsecurity.MainActivity;
+import com.example.macroeconomicfoodsecurity.DBHandler;
+
 import com.example.macroeconomicfoodsecurity.R;
+import com.example.macroeconomicfoodsecurity.ReaderController;
+import com.example.macroeconomicfoodsecurity.Result;
+import com.example.macroeconomicfoodsecurity.WriterController;
 import com.example.macroeconomicfoodsecurity.databinding.FragmentHomeBinding;
 import com.example.macroeconomicfoodsecurity.ui.notifications.NotificationsFragment;
+
+import java.io.IOException;
+import java.util.List;
 
 public class HomeFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
     private FragmentHomeBinding binding;
+
     private RadioGroup radioGroup;
+
+    private List<Result> res;
+    private ReaderController readerController;
+    private DBHandler dbHandler;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -35,6 +50,27 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+//        dbHandler=new DBHandler(getActivity().getApplicationContext());
+//        Log.i("dbHandler-->", String.valueOf(dbHandler));
+//        readerController = new ReaderController(dbHandler);
+//          dbHandler.addNewGDPPercent("1995", "34", "35", "33");
+//        try {
+//            WriterController.seedData(getActivity().getApplicationContext(), dbHandler);
+//        } catch (IOException e) {
+//           // e.printStackTrace();
+//            Log.i("printstacktrace","errorrr");
+//        }
+//        List<Result> courseModalArrayList = readerController.getGDPPercent("india");
+//
+//        for (Result m: courseModalArrayList
+//        ) {
+//            Log.e("Main Home ", m.percent);
+//        }
+      // res= rc.getGDPPercent("China");
+//       for(int i=0;i<res.size();i++){
+//           Log.i("RESULTS", String.valueOf(res.get(i)));
+//       }
+
 
 //        final TextView textView = binding.textHome;
 //        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
