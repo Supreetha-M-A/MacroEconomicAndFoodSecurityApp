@@ -1,9 +1,12 @@
-# CMPE 277 Hackathon : MacroEconomicAndFoodSecurityApp
-- Hackathon Spring 2022
+# CMPE 277 Hackathon
+
 - Macroeconomic Researcher Time Series Dashboard
 
 - <b>Team Name</b> : Soul Spartans
 - <b> Team Members</b> : Shruthi Srinivasan, Supreetha M A and Netra Amrale
 
-# Output
 
+# Output
+- Screen Layouts
+  - HD video is [here](OUTPUT/Video/screenlayouts.mp4)
+  - ![GIF](OUTPUT/GIF//screenlayouts_AdobeCreativeCloudExpress.gif)
