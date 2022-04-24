@@ -2,10 +2,14 @@ package com.example.macroeconomicfoodsecurity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.View;
+import android.widget.Button;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.XAxis;
@@ -33,6 +37,17 @@ public class DashboardGraphActivity extends AppCompatActivity implements OnChart
         ArrayList<String> year = i.getStringArrayListExtra("year");
         //ArrayListExtra("year");
         ArrayList<String> percent = i.getStringArrayListExtra("percent");
+        SharedPreferences sp= getApplicationContext().getSharedPreferences("type", Context.MODE_PRIVATE);
+        Button btn=(Button) findViewById(R.id.annotateButton);
+
+        Log.i("sp-->", String.valueOf(sp));
+       String type=sp.getString("usertype","");
+        Log.i("type from sp",type);
+        if(type.equals(" Government official")){
+            btn.setVisibility(View.GONE);
+
+        }
+
 
         lineChart = (LineChart) findViewById(R.id.linechart);
         lineChart.setOnChartGestureListener(DashboardGraphActivity.this);
