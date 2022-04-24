@@ -13,12 +13,16 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.macroeconomicfoodsecurity.databinding.ActivityMainBinding;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     private DBHandler dbHandler;
+    private ReaderController readerController;
+    private  WriterController writerController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +33,20 @@ public class MainActivity extends AppCompatActivity {
         // creating a new dbhandler class
         // and passing our context to it.
         dbHandler = new DBHandler(this);
-        dbHandler.addNewGDPPercent("1995", "34", "35", "33");
-        ArrayList<Model> courseModalArrayList = dbHandler.readGDPPercentages();
-        Log.e("Main", courseModalArrayList.get(0).china);
+        readerController = new ReaderController(dbHandler);
+      //  dbHandler.addNewGDPPercent("1995", "34", "35", "33");
+        try {
+            WriterController.seedData(this.getApplicationContext(), dbHandler);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        List<Result> courseModalArrayList = readerController.getGDPPercent("india");
+
+        for (Result m: courseModalArrayList
+             ) {
+            Log.e("Main", m.percent);
+        }
+
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
