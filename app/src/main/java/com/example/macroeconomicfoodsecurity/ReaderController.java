@@ -76,7 +76,26 @@ public  class ReaderController {
         }
         return   results;
     }
+    public  List<Result>   getFertlizerConsump(String country) {
+        List<Result> results = null;
+        try {
+            List<Model> gdpPercent =  this.dbHandler.readFertiliserConsump();
+            if(country == null || country.equalsIgnoreCase("china")){
+                results= gdpPercent.stream().map(m -> new Result(m.year, m.china)).collect(Collectors.toList());
+            }
+            else if(country.equalsIgnoreCase("usa")){
+                results= gdpPercent.stream().map(m -> new Result(m.year, m.usa)).collect(Collectors.toList());
+            }
+            else{
+                results = gdpPercent.stream().map(m -> new Result(m.year, m.india)).collect(Collectors.toList());
+            }
 
+
+        } catch (Exception e) {
+            //log the exception
+        }
+        return   results;
+    }
     public  List<Result>   getGDPAgri(String country) {
         List<Result> results = null;
         try {

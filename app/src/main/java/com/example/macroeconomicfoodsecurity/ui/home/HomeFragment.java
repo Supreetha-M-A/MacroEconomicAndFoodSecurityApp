@@ -1,5 +1,8 @@
 package com.example.macroeconomicfoodsecurity.ui.home;
 
+import static com.example.macroeconomicfoodsecurity.MainActivity.isResearcher;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -7,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -15,12 +19,15 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.macroeconomicfoodsecurity.MainActivity;
 import com.example.macroeconomicfoodsecurity.DBHandler;
+
 import com.example.macroeconomicfoodsecurity.R;
 import com.example.macroeconomicfoodsecurity.ReaderController;
 import com.example.macroeconomicfoodsecurity.Result;
 import com.example.macroeconomicfoodsecurity.WriterController;
 import com.example.macroeconomicfoodsecurity.databinding.FragmentHomeBinding;
+import com.example.macroeconomicfoodsecurity.ui.notifications.NotificationsFragment;
 
 import java.io.IOException;
 import java.util.List;
@@ -28,10 +35,12 @@ import java.util.List;
 public class HomeFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
     private FragmentHomeBinding binding;
+
+    private RadioGroup radioGroup;
+
     private List<Result> res;
     private ReaderController readerController;
     private DBHandler dbHandler;
-
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -65,7 +74,6 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
 
 //        final TextView textView = binding.textHome;
 //        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-
         return root;
     }
 
@@ -77,6 +85,23 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
+
+//        NotificationsFragment notificationsFragment = new NotificationsFragment();
+//        Bundle args = new Bundle();
+//        args.putBoolean("isResearcher", true);
+        radioGroup = (RadioGroup) getView().findViewById(R.id.accountRadioGroup);
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if(checkedId == R.id.govtOfficial){
+                    isResearcher = false;
+                } else {
+                    isResearcher = true;
+                }
+            }
+        });
+//        notificationsFragment.setArguments(args);
+//        getFragmentManager().beginTransaction().add(R.id.container, notificationsFragment).commit();
     }
 
     @Override
@@ -92,6 +117,10 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+    public void toggleAccount() {
 
     }
 }

@@ -166,10 +166,55 @@ public class WriterController {
         }
 
     }
+
+    private static void  seedFertilizerConsump(Context context, DBHandler dbHandler)
+    {
+
+        Log.e("FertilizerCons" , "");
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(
+                    new InputStreamReader(context.getAssets().
+                            open("agriculture/FertilizerCons.csv"), "UTF-8"));
+
+            String line ="";
+            line = reader.readLine();
+            Log.e("SeedGDPAgri" , line);
+            while ((line = reader.readLine()) != null) {
+                Log.e("SeedGDPAgri" , line);
+                String[] str = line.split(",");
+                String[] strArray = { "","","",""};
+                int index  = 0;
+                for (String s : str
+                ) {
+                    Log.e("FertilizerCons" , s);
+                    strArray[index++] = s;
+
+                }
+
+                dbHandler.addFertilizerConsum(strArray );
+
+
+            }
+        } catch (IOException e) {
+            Log.e("FertilizerCons" , e.getMessage());
+            //log the exception
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    //log the exception
+                }
+            }
+        }
+
+    }
     public static void seedData(Context context, DBHandler dbHandler) throws IOException {
         seedGDPpercent(context, dbHandler);
         seedFDIInFlowspercent(context, dbHandler);
         seedFDIOutFlowspercent(context, dbHandler);
         seedGDPAgri(context, dbHandler);
+        seedFertilizerConsump(context, dbHandler);
     }
 }

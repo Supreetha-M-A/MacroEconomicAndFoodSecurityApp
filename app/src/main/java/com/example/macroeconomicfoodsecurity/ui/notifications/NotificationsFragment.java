@@ -1,11 +1,15 @@
 package com.example.macroeconomicfoodsecurity.ui.notifications;
 
+import static com.example.macroeconomicfoodsecurity.MainActivity.isResearcher;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -31,6 +35,7 @@ public class NotificationsFragment extends Fragment implements AdapterView.OnIte
 
 //        final TextView textView = binding.textNotifications;
 //        notificationsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+
         return root;
     }
 
@@ -42,6 +47,13 @@ public class NotificationsFragment extends Fragment implements AdapterView.OnIte
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
+//        Boolean isResearcher = getArguments().getBoolean("isResearcher");
+//        if(!isResearcher) {
+//            Button annotateButton = getView().findViewById(R.id.annotateButton);
+//            annotateButton.setVisibility(View.INVISIBLE);
+//            EditText annotationText = getView().findViewById(R.id.annotationText);
+//            annotationText.setVisibility(View.INVISIBLE);
+//        }
     }
 
     @Override
