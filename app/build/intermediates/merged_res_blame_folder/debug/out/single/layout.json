@@ -1,0 +1,30 @@
+[
+    {
+        "merged": "E:\\NetraMasters\\277\\MacroEconomicAndFoodSecurityApp\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_dashboard.xml",
+        "source": "E:\\NetraMasters\\277\\MacroEconomicAndFoodSecurityApp\\app\\src\\main\\res\\layout\\fragment_dashboard.xml"
+    },
+    {
+        "merged": "E:\\NetraMasters\\277\\MacroEconomicAndFoodSecurityApp\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_main.xml",
+        "source": "E:\\NetraMasters\\277\\MacroEconomicAndFoodSecurityApp\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "E:\\NetraMasters\\277\\MacroEconomicAndFoodSecurityApp\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_welcome.xml",
+        "source": "E:\\NetraMasters\\277\\MacroEconomicAndFoodSecurityApp\\app\\src\\main\\res\\layout\\fragment_welcome.xml"
+    },
+    {
+        "merged": "E:\\NetraMasters\\277\\MacroEconomicAndFoodSecurityApp\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_trade_graph.xml",
+        "source": "E:\\NetraMasters\\277\\MacroEconomicAndFoodSecurityApp\\app\\src\\main\\res\\layout\\activity_trade_graph.xml"
+    },
+    {
+        "merged": "E:\\NetraMasters\\277\\MacroEconomicAndFoodSecurityApp\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_dashboard_graph.xml",
+        "source": "E:\\NetraMasters\\277\\MacroEconomicAndFoodSecurityApp\\app\\src\\main\\res\\layout\\activity_dashboard_graph.xml"
+    },
+    {
+        "merged": "E:\\NetraMasters\\277\\MacroEconomicAndFoodSecurityApp\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_home.xml",
+        "source": "E:\\NetraMasters\\277\\MacroEconomicAndFoodSecurityApp\\app\\src\\main\\res\\layout\\fragment_home.xml"
+    },
+    {
+        "merged": "E:\\NetraMasters\\277\\MacroEconomicAndFoodSecurityApp\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_notifications.xml",
+        "source": "E:\\NetraMasters\\277\\MacroEconomicAndFoodSecurityApp\\app\\src\\main\\res\\layout\\fragment_notifications.xml"
+    }
+]

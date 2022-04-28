@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="20dp"
+        android:layout_gravity="center">
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="28dp"
+            android:layout_height="45dp"
+            android:background="#FF9800"
+            android:src="?attr/actionModePasteDrawable"
+            />
+
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="207dp"
+            android:layout_height="61dp"
+            android:text="Macroeconomic Researcher Food Years Security Time Series Dashboard"
+            android:textSize="16sp"
+            />
+        <Spinner
+            android:id="@+id/spinner3"
+            android:layout_width="200dp"
+            android:layout_height="41dp"
+            android:layout_marginEnd="4dp"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start Year:"
+            />
+        <EditText
+            android:id="@+id/editTextNumber"
+            android:layout_width="75dp"
+            android:layout_height="43dp"
+            android:ems="10"
+            android:inputType="number"
+            android:textSize="14sp"
+            />
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="End Year:"
+            android:layout_marginLeft="40dp"
+            />
+
+        <EditText
+            android:id="@+id/editTextNumberDecimal"
+            android:layout_width="75dp"
+            android:layout_height="43dp"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:textSize="14sp"
+            />
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="68dp"
+            android:layout_height="32dp"
+            android:text="Apply"
+            android:textSize="10sp"
+            />
+
+    </LinearLayout>
+
+
+
+
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/linechart"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+
+        >
+
+    </com.github.mikephil.charting.charts.LineChart>
+
+
+
+
+
+
+
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center"
+   >
+    <Button
+        android:id="@+id/annotateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="Annotate"
+        android:layout_gravity="center"
+        />
+
+
+</LinearLayout>
+
+
+
+</LinearLayout>
